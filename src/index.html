@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Lovers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css?family=Lemon&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div id="root">
+    <main id="page-0">
+      <section class="section-1">
+        <img class="img-section-1" src="img/web-1.jpg" alt="">
+        <div class="link-start" id="link-start-1">POKEMONS</div>
+      </section>
+      <section class="section-2">
+        <img class="img-section-2" src="img/web-2.png" alt="">
+        <div class="link-start" id="link-start-2">POKEDEX</div>
+      </section>
+      <section class="section-3">
+        <img class="img-section-3" src="img/web-3.jpg" alt="">
+        <div class="link-start" id="link-start-3" href="">ATRAPALOS</div>
+      </section>
+      <section class="section-4">
+        <img class="img-section-4" src="img/web-4.jpg" alt="">
+        <div class="link-start" id="link-start-4" href="">CANDYS</div>
+      </section>
+      <section class="logo"><img src="img/web-5.png" alt=""></section>
+    </main>
+    <main id="page-1">
+      <header>
+        <section class="menuLogo">
+          <img src="img/web-5.png" alt="">
+        </section>
+        <section class="menu">
+          <div class="linkMenu1">POKEMONS</div>
+          <div class="linkMenu2">POKEDEX</div>
+          <div class="linkMenu3">ATRAPALOS</div>
+          <div class="linkMenu4">CANDYS</div>
+        </section>
+      </header>
+      <section id="sectionOrderFilter">
+        <select id="fieldOrdenar">
+          <option selected value="0"> Elige una opción </option>
+          <option value="1">Ordenar A-Z</option>
+          <option value="2">Ordenar Z-A</option>
+          <option value="3">Ordenar</option>
+        </select>
+        <section id="fieldFind">
+          <input type="search" id="textSearch" placeholder="Buscar pokemon...">
+          <input type="button" id="buttonSearch" class="style_button" value="Buscar">
+        </section>
+      </section>
+      <section class="sectionInitPokemon"></section>
+    </main>
+    <main id="page-2">
+      <header>
+        <section class="menuLogo">
+          <img src="img/web-5.png" alt="">
+        </section>
+        <section class="menu">
+          <div class="linkMenu1">POKEMONS</div>
+          <div class="linkMenu2">POKEDEX</div>
+          <div class="linkMenu3">ATRAPALOS</div>
+          <div class="linkMenu4">CANDYS</div>
+        </section>
+      </header>
+    </main>
+    <section class="sectionFilterType">
+      <ul>
+        <li>Bicho
+          <input type="checkbox" name="Bug" value="type">
+          <input type="checkbox" name="Bug" value="weaknesses"><br>
+        </li>
+        <li>Dragon
+          <input type="checkbox" name="Dragon" value="type">
+          <input type="checkbox" name="Dragon" value="weaknesses"><br>
+        </li>
+        <li>Hada
+          <input type="checkbox" name="Fairy" value="type">
+          <input type="checkbox" name="Fairy" value="weaknesses"><br>
+        </li>
+        <li>Fuego
+          <input type="checkbox" name="Fire" value="type">
+          <input type="checkbox" name="Fire" value="weaknesses"><br>
+        </li>
+        <li>Tierra
+          <input type="checkbox" name="Ground" value="type">
+          <input type="checkbox" name="Ground" value="weaknesses"><br>
+        </li>
+        <li>Normal
+          <input type="checkbox" name="Normal" value="type">
+          <input type="checkbox" name="Normal" value="weaknesses"><br>
+        </li>
+      </ul>
+      <ul>
+        <li>Psíquico
+          <input type="checkbox" name="Psychic" value="type">
+          <input type="checkbox" name="Psychic" value="weaknesses"><br>
+        </li>
+        <li>Acero
+          <input type="checkbox" name="Steel" value="type">
+          <input type="checkbox" name="Steel" value="weaknesses"><br>
+        </li>
+        <li>Siniestro
+          <input type="checkbox" name="Dark" value="type">
+          <input type="checkbox" name="Dark" value="weaknesses"><br>
+        </li>
+        <li>Eléctrico
+          <input type="checkbox" name="Electric" value="type">
+          <input type="checkbox" name="Electric" value="weaknesses"><br>
+        </li>
+        <li>Lucha
+          <input type="checkbox" name="Fighting" value="type">
+          <input type="checkbox" name="Fighting" value="weaknesses"><br>
+        </li>
+        <li>Volador
+          <input type="checkbox" name="Flying" value="type">
+          <input type="checkbox" name="Flying" value="weaknesses"><br>
+        </li>
+      </ul>
+      <ul>
+        <li>Planta
+          <input type="checkbox" name="Grass" value="type">
+          <input type="checkbox" name="Grass" value="weaknesses"><br>
+        </li>
+        <li>Hielo
+          <input type="checkbox" name="Ice" value="type">
+          <input type="checkbox" name="Ice" value="weaknesses"><br>
+        </li>
+        <li>Veneno
+          <input type="checkbox" name="Poison" value="type">
+          <input type="checkbox" name="Poison" value="weaknesses"><br>
+        </li>
+        <li>Fantasma
+          <input type="checkbox" name="Ghost" value="type">
+          <input type="checkbox" name="Ghost" value="weaknesses"><br>
+        </li>
+        <li>Roca
+          <input type="checkbox" name="Rock" value="type">
+          <input type="checkbox" name="Rock" value="weaknesses"><br>
+        </li>
+        <li>Agua
+          <input type="checkbox" name="Water" value="type">
+          <input type="checkbox" name="Water" value="weaknesses"><br>
+        </li>
+      </ul>
+    </section>
+    <input type="button" id="buttonTypeWeakness" class="style_button" value="Buscar">
+    <section id="sectionFilterTypeWeakness"></section>
+    <main id="page-3">
+      <header>
+        <section class="menuLogo">
+          <img src="img/web-5.png" alt="">
+        </section>
+        <section class="menu">
+          <div class="linkMenu1">POKEMONS</div>
+          <div class="linkMenu2">POKEDEX</div>
+          <div class="linkMenu3">ATRAPALOS</div>
+          <div class="linkMenu4">CANDYS</div>
+        </section>
+      </header>
+      <section id="sectionNumberPokemon">
+        <input type="number" id="inputNumber" placeholder="Top">
+        <input type="button" id="buttonFastPokemon" class="style_button" value="Buscar">
+      </section>
+      <section class="section10Pokemon"></section>
+      <canvas id="myChart"></canvas>
+    </main>
+    <main id="page-4">
+      <header>
+        <section class="menuLogo">
+          <img src="img/web-5.png" alt="">
+        </section>
+        <section class="menu">
+          <div class="linkMenu1">POKEMONS</div>
+          <div class="linkMenu2">POKEDEX</div>
+          <div class="linkMenu3">ATRAPALOS</div>
+          <div class="linkMenu4">CANDYS</div>
+        </section>
+      </header>
+      <section id="sectionNumberCandy">
+        <input type="number" id="inputCandy" placeholder="Numero de caramelos...">
+        <input type="button" id="buttonFindCandy" class="style_button" value="Buscar">
+      </section>
+      <section class="sectionCandyPokemon"></section>
+    </main>
+  </div>
+  <script type="module" src="main.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</body>
+</html>
