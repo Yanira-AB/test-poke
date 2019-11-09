@@ -4,7 +4,7 @@ export const example2 = () => 'example2';
 /* eslint-disable max-len */
 // eslint-disable-next-line arrow-body-style
 export const readPokemon = (data) => {
-  return data.map((pokemon) => ({
+  const dataPoke = data.map((pokemon) => ({
     id: pokemon.id,
     num: pokemon.num,
     name: pokemon.name,
@@ -14,6 +14,7 @@ export const readPokemon = (data) => {
     spawns: pokemon.spawn_chance,
     time: pokemon.spawn_time,
   }));
+  return dataPoke;
 };
 
 export const ordenarAZ = (data) => {
