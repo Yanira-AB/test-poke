@@ -58,7 +58,7 @@ describe('readPokemon', () => {
     expect(typeof readPokemon).toBe('function');
   });
   it('debería retornar un array con un obj con las debilidades de los pokemons buscados', () => {
-    const data = {
+    const data = [{
       id: 1,
       num: '001',
       peso: 48,
@@ -66,12 +66,12 @@ describe('readPokemon', () => {
       name: 'Pikachu',
       img: 'pokemon.img',
       candy: 'candy pika',
-      candy_num: 25,
+      candy_count: 25,
       egg: 4,
-      spawns: 69,
-      time: '8:30',
-    };
-    const result = {
+      spawn_chance: 69,
+      spawn_time: '8:30',
+    }];
+    const result = [{
       id: 1,
       num: '001',
       name: 'Pikachu',
@@ -80,7 +80,7 @@ describe('readPokemon', () => {
       candy_num: 25,
       spawns: 69,
       time: '8:30',
-    };
+    }];
     expect(readPokemon(data)).toStrictEqual(result);
   });
 });
