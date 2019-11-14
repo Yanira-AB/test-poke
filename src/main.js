@@ -5,15 +5,35 @@
 import POKEMON from './data/pokemon/pokemon.js';
 import {
   readPokemon, ordenarAZ, ordenarZA, ordenarNumber, searchPokemonByName,
-  findPokemonByCandy, appearsPokemons, filterType, filterWeak, example,
+  findPokemonByCandy, appearsPokemons, filterType, filterWeak,
 } from './data.js';
 
-example();
+document.querySelector('#headers').style.display = 'none';
+document.querySelector('#page-1').style.display = 'none';
+document.querySelector('#page-2').style.display = 'none';
+document.querySelector('#page-3').style.display = 'none';
+document.querySelector('#page-4').style.display = 'none';
+
+document.querySelector('#btn-menu-movil').addEventListener('mouseover', () => {
+  const listMenuMovil = document.querySelector('.menu-movil');
+  listMenuMovil.classList.remove('hide');
+});
+
+document.querySelector('.menu-movil').addEventListener('mouseover', () => {
+  const listMenuMovil = document.querySelector('.menu-movil');
+  listMenuMovil.classList.remove('hide');
+});
+
+document.querySelector('.menu-movil').addEventListener('mouseout', () => {
+  const listMenuMovil = document.querySelector('.menu-movil');
+  listMenuMovil.classList.add('hide');
+});
 
 const listPokemones = readPokemon(POKEMON);
 
 function paintPokemones(listPaintOfPokemon, sectionPaint, index) {
   const sectionCards1 = document.querySelector(sectionPaint);
+  sectionCards1.innerHTML = '';
   for (let j = 0; j < index; j += 1) {
     const cardPokemon = document.createElement('article');
     cardPokemon.classList.add('style-card-pokemon');
@@ -95,95 +115,6 @@ function paintCanvas(listPaintOfPokemon) {
   });
 }
 
-document.querySelector('#page-1').style.display = 'none';
-document.querySelector('#page-2').style.display = 'none';
-document.querySelector('#page-3').style.display = 'none';
-document.querySelector('#page-4').style.display = 'none';
-
-document.querySelector('.img-section-1').addEventListener('click', () => {
-  document.querySelector('#page-0').style.display = 'none';
-  document.querySelector('#page-1').style.display = 'flex';
-  paintPokemones(listPokemones, '.sectionInitPokemon', listPokemones.length);
-});
-
-document.querySelector('#link-start-1').addEventListener('click', () => {
-  document.querySelector('#page-0').style.display = 'none';
-  document.querySelector('#page-1').style.display = 'flex';
-  paintPokemones(listPokemones, '.sectionInitPokemon', listPokemones.length);
-});
-
-document.querySelector('.linkMenu1').addEventListener('click', () => {
-  document.querySelector('#page-0').style.display = 'none';
-  document.querySelector('#page-2').style.display = 'none';
-  document.querySelector('#page-3').style.display = 'none';
-  document.querySelector('#page-4').style.display = 'none';
-  document.querySelector('#page-1').style.display = 'flex';
-  paintPokemones(listPokemones, '.sectionInitPokemon', listPokemones.length);
-});
-
-document.querySelector('.img-section-2').addEventListener('click', () => {
-  document.querySelector('#page-0').style.display = 'none';
-  document.querySelector('#page-2').style.display = 'flex';
-});
-
-document.querySelector('#link-start-2').addEventListener('click', () => {
-  document.querySelector('#page-0').style.display = 'none';
-  document.querySelector('#page-2').style.display = 'flex';
-});
-
-document.querySelector('.linkMenu2').addEventListener('click', () => {
-  document.querySelector('#page-0').style.display = 'none';
-  document.querySelector('#page-1').style.display = 'none';
-  document.querySelector('#page-2').style.display = 'flex';
-  document.querySelector('#page-4').style.display = 'none';
-  document.querySelector('#page-3').style.display = 'none';
-});
-
-document.querySelector('.img-section-3').addEventListener('click', () => {
-  document.querySelector('#page-0').style.display = 'none';
-  document.querySelector('#page-3').style.display = 'flex';
-  const listPaintOfPokemon = appearsPokemons(listPokemones);
-  paintCanvas(listPaintOfPokemon);
-  paintPokemones(listPaintOfPokemon, '.section10Pokemon', 10);
-});
-
-document.querySelector('#link-start-3').addEventListener('click', () => {
-  document.querySelector('#page-0').style.display = 'none';
-  document.querySelector('#page-3').style.display = 'flex';
-  const listPaintOfPokemon = appearsPokemons(listPokemones);
-  paintCanvas(listPaintOfPokemon);
-  paintPokemones(listPaintOfPokemon, '.section10Pokemon', listPaintOfPokemon.length);
-});
-
-document.querySelector('.linkMenu3').addEventListener('click', () => {
-  document.querySelector('#page-0').style.display = 'none';
-  document.querySelector('#page-1').style.display = 'none';
-  document.querySelector('#page-2').style.display = 'none';
-  document.querySelector('#page-4').style.display = 'none';
-  document.querySelector('#page-3').style.display = 'flex';
-  const listPaintOfPokemon = appearsPokemons(listPokemones);
-  paintCanvas(listPaintOfPokemon);
-  paintPokemones(listPaintOfPokemon, '.section10Pokemon', 10);
-});
-
-document.querySelector('.img-section-4').addEventListener('click', () => {
-  document.querySelector('#page-0').style.display = 'none';
-  document.querySelector('#page-4').style.display = 'flex';
-});
-
-document.querySelector('#link-start-4').addEventListener('click', () => {
-  document.querySelector('#page-0').style.display = 'none';
-  document.querySelector('#page-4').style.display = 'flex';
-});
-
-document.querySelector('.linkMenu4').addEventListener('click', () => {
-  document.querySelector('#page-0').style.display = 'none';
-  document.querySelector('#page-1').style.display = 'none';
-  document.querySelector('#page-2').style.display = 'none';
-  document.querySelector('#page-3').style.display = 'none';
-  document.querySelector('#page-4').style.display = 'flex';
-});
-
 document.querySelector('#buttonTypeWeakness').addEventListener('click', () => {
   document.querySelector('#sectionFilterTypeWeakness').innerHTML = '';
   searchTypeWeakness();
@@ -223,4 +154,142 @@ document.querySelector('#buttonFastPokemon').addEventListener('click', () => {
   document.querySelector('.section10Pokemon').innerHTML = '';
   paintCanvas(listPaintOfPokemon);
   paintPokemones(listPaintOfPokemon, '.section10Pokemon', number);
+});
+
+document.querySelector('.section-1').addEventListener('click', () => {
+  document.querySelector('#headers').style.display = 'flex';
+  document.querySelector('#page-1').style.display = 'flex';
+  document.querySelector('#page-2').style.display = 'none';
+  document.querySelector('#page-3').style.display = 'none';
+  document.querySelector('#page-4').style.display = 'none';
+  document.querySelector('#page-0').style.display = 'none';
+  paintPokemones(listPokemones, '.sectionInitPokemon', listPokemones.length);
+});
+
+document.querySelector('.section-2').addEventListener('click', () => {
+  document.querySelector('#headers').style.display = 'flex';
+  document.querySelector('#page-1').style.display = 'none';
+  document.querySelector('#page-2').style.display = 'flex';
+  document.querySelector('#page-3').style.display = 'none';
+  document.querySelector('#page-4').style.display = 'none';
+  document.querySelector('#page-0').style.display = 'none';
+});
+
+document.querySelector('.section-3').addEventListener('click', () => {
+  document.querySelector('#headers').style.display = 'flex';
+  document.querySelector('#page-1').style.display = 'none';
+  document.querySelector('#page-2').style.display = 'none';
+  document.querySelector('#page-3').style.display = 'flex';
+  document.querySelector('#page-4').style.display = 'none';
+  document.querySelector('#page-0').style.display = 'none';
+  const listPaintOfPokemon = appearsPokemons(listPokemones);
+  paintCanvas(listPaintOfPokemon);
+  paintPokemones(listPaintOfPokemon, '.section10Pokemon', 10);
+});
+
+document.querySelector('.section-4').addEventListener('click', () => {
+  document.querySelector('#headers').style.display = 'flex';
+  document.querySelector('#page-1').style.display = 'none';
+  document.querySelector('#page-2').style.display = 'none';
+  document.querySelector('#page-3').style.display = 'none';
+  document.querySelector('#page-4').style.display = 'flex';
+  document.querySelector('#page-0').style.display = 'none';
+});
+
+document.querySelector('#linkMenu1-movil').addEventListener('click', () => {
+  document.querySelector('#headers').style.display = 'flex';
+  document.querySelector('#page-1').style.display = 'flex';
+  document.querySelector('#page-2').style.display = 'none';
+  document.querySelector('#page-3').style.display = 'none';
+  document.querySelector('#page-4').style.display = 'none';
+  document.querySelector('#page-0').style.display = 'none';
+  paintPokemones(listPokemones, '.sectionInitPokemon', listPokemones.length);
+});
+
+document.querySelector('#linkMenu2-movil').addEventListener('click', () => {
+  document.querySelector('#headers').style.display = 'flex';
+  document.querySelector('#page-1').style.display = 'none';
+  document.querySelector('#page-2').style.display = 'flex';
+  document.querySelector('#page-3').style.display = 'none';
+  document.querySelector('#page-4').style.display = 'none';
+  document.querySelector('#page-0').style.display = 'none';
+});
+
+document.querySelector('#linkMenu3-movil').addEventListener('click', () => {
+  document.querySelector('#headers').style.display = 'flex';
+  document.querySelector('#page-1').style.display = 'none';
+  document.querySelector('#page-2').style.display = 'none';
+  document.querySelector('#page-3').style.display = 'flex';
+  document.querySelector('#page-4').style.display = 'none';
+  document.querySelector('#page-0').style.display = 'none';
+  const listPaintOfPokemon = appearsPokemons(listPokemones);
+  paintCanvas(listPaintOfPokemon);
+  paintPokemones(listPaintOfPokemon, '.section10Pokemon', 10);
+});
+
+document.querySelector('#linkMenu4-movil').addEventListener('click', () => {
+  document.querySelector('#headers').style.display = 'flex';
+  document.querySelector('#page-1').style.display = 'none';
+  document.querySelector('#page-2').style.display = 'none';
+  document.querySelector('#page-3').style.display = 'none';
+  document.querySelector('#page-4').style.display = 'flex';
+  document.querySelector('#page-0').style.display = 'none';
+});
+
+document.querySelector('#img-logo').addEventListener('click', () => {
+  document.querySelector('#headers').style.display = 'none';
+  document.querySelector('#page-1').style.display = 'none';
+  document.querySelector('#page-2').style.display = 'none';
+  document.querySelector('#page-3').style.display = 'none';
+  document.querySelector('#page-4').style.display = 'none';
+  document.querySelector('#page-0').style.display = 'flex';
+});
+
+document.querySelector('#img-logo-movil').addEventListener('click', () => {
+  document.querySelector('#headers').style.display = 'none';
+  document.querySelector('#page-1').style.display = 'none';
+  document.querySelector('#page-2').style.display = 'none';
+  document.querySelector('#page-3').style.display = 'none';
+  document.querySelector('#page-4').style.display = 'none';
+  document.querySelector('#page-0').style.display = 'flex';
+});
+
+document.querySelector('.linkMenu1').addEventListener('click', () => {
+  document.querySelector('#headers').style.display = 'flex';
+  document.querySelector('#page-1').style.display = 'flex';
+  document.querySelector('#page-2').style.display = 'none';
+  document.querySelector('#page-3').style.display = 'none';
+  document.querySelector('#page-4').style.display = 'none';
+  document.querySelector('#page-0').style.display = 'none';
+  paintPokemones(listPokemones, '.sectionInitPokemon', listPokemones.length);
+});
+
+document.querySelector('.linkMenu2').addEventListener('click', () => {
+  document.querySelector('#headers').style.display = 'flex';
+  document.querySelector('#page-1').style.display = 'none';
+  document.querySelector('#page-2').style.display = 'flex';
+  document.querySelector('#page-3').style.display = 'none';
+  document.querySelector('#page-4').style.display = 'none';
+  document.querySelector('#page-0').style.display = 'none';
+});
+
+document.querySelector('.linkMenu3').addEventListener('click', () => {
+  document.querySelector('#headers').style.display = 'flex';
+  document.querySelector('#page-1').style.display = 'none';
+  document.querySelector('#page-2').style.display = 'none';
+  document.querySelector('#page-3').style.display = 'flex';
+  document.querySelector('#page-4').style.display = 'none';
+  document.querySelector('#page-0').style.display = 'none';
+  const listPaintOfPokemon = appearsPokemons(listPokemones);
+  paintCanvas(listPaintOfPokemon);
+  paintPokemones(listPaintOfPokemon, '.section10Pokemon', 10);
+});
+
+document.querySelector('.linkMenu4').addEventListener('click', () => {
+  document.querySelector('#headers').style.display = 'flex';
+  document.querySelector('#page-1').style.display = 'none';
+  document.querySelector('#page-2').style.display = 'none';
+  document.querySelector('#page-3').style.display = 'none';
+  document.querySelector('#page-4').style.display = 'flex';
+  document.querySelector('#page-0').style.display = 'none';
 });

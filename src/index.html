@@ -31,10 +31,10 @@
       </section>
       <section class="logo"><img src="img/web-5.png" alt=""></section>
     </main>
-    <main id="page-1">
-      <header>
+    <div id="headers">
+      <header class="header-desktop">
         <section class="menuLogo">
-          <img src="img/web-5.png" alt="">
+          <img id="img-logo" src="img/web-5.png" alt="">
         </section>
         <section class="menu">
           <div class="linkMenu1">POKEMONS</div>
@@ -43,6 +43,20 @@
           <div class="linkMenu4">CANDYS</div>
         </section>
       </header>
+      <header class="header-movil">
+        <section class="menuLogo-movil">
+          <img id="img-logo-movil" src="img/web-5.png" alt="">
+          <button id="btn-menu-movil" class="btn-menu-movil"><img src="img/menu-movil.png" alt=""></button>
+        </section>
+        <section class="menu-movil hide">
+          <div id="linkMenu1-movil" class="linkMenu1">POKEMONS</div>
+          <div id="linkMenu2-movil" class="linkMenu2">POKEDEX</div>
+          <div id="linkMenu3-movil" class="linkMenu3">ATRAPALOS</div>
+          <div id="linkMenu4-movil" class="linkMenu4">CANDYS</div>
+        </section>
+      </header>
+    </div>
+    <main id="page-1">
       <section id="sectionOrderFilter">
         <select id="fieldOrdenar">
           <option selected value="0"> Elige una opción </option>
@@ -58,29 +72,6 @@
       <section class="sectionInitPokemon"></section>
     </main>
     <main id="page-2">
-      <header class="header-desktop">
-        <section class="menuLogo">
-          <img src="img/web-5.png" alt="">
-        </section>
-        <section class="menu">
-          <div class="linkMenu1">POKEMONS</div>
-          <div class="linkMenu2">POKEDEX</div>
-          <div class="linkMenu3">ATRAPALOS</div>
-          <div class="linkMenu4">CANDYS</div>
-        </section>
-      </header>
-      <header class="header-movil">
-        <section class="menuLogo-movil">
-          <img src="img/web-5.png" alt="">
-          <button class="btn-menu-movil"><img src="img/menu-movil.png" alt=""></button>
-        </section>
-        <section class="menu-movil">
-          <div class="linkMenu1">POKEMONS</div>
-          <div class="linkMenu2">POKEDEX</div>
-          <div class="linkMenu3">ATRAPALOS</div>
-          <div class="linkMenu4">CANDYS</div>
-        </section>
-      </header>
       <main id="sectiontFilterType">
         <section class="sectionFilterType">
           <div class="column-movil">
@@ -244,39 +235,17 @@
       </main>
     </main>
     <main id="page-3">
-      <header>
-        <section class="menuLogo">
-          <img src="img/web-5.png" alt="">
-        </section>
-        <section class="menu">
-          <div class="linkMenu1">POKEMONS</div>
-          <div class="linkMenu2">POKEDEX</div>
-          <div class="linkMenu3">ATRAPALOS</div>
-          <div class="linkMenu4">CANDYS</div>
-        </section>
-      </header>
       <section id="sectionNumberPokemon">
         <input type="number" id="inputNumber" placeholder="Top">
-        <input type="button" id="buttonFastPokemon" class="style_button" value="Buscar">
+        <input type="button" id="buttonFastPokemon" class="" value="Buscar">
       </section>
       <section class="section10Pokemon"></section>
       <canvas id="myChart"></canvas>
     </main>
     <main id="page-4">
-      <header>
-        <section class="menuLogo">
-          <img src="img/web-5.png" alt="">
-        </section>
-        <section class="menu">
-          <div class="linkMenu1">POKEMONS</div>
-          <div class="linkMenu2">POKEDEX</div>
-          <div class="linkMenu3">ATRAPALOS</div>
-          <div class="linkMenu4">CANDYS</div>
-        </section>
-      </header>
       <section id="sectionNumberCandy">
         <input type="number" id="inputCandy" placeholder="Numero de caramelos...">
-        <input type="button" id="buttonFindCandy" class="style_button" value="Buscar">
+        <input type="button" id="buttonFindCandy" class="" value="Buscar">
       </section>
       <section class="sectionCandyPokemon"></section>
     </main>

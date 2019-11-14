@@ -1,13 +1,8 @@
 /* eslint-disable linebreak-style */
 import {
-  example, searchPokemonByName, findPokemonByCandy, filterType, filterWeak, readPokemon,
+  searchPokemonByName, findPokemonByCandy, filterType, filterWeak, readPokemon, ordenarAZ,
+  ordenarZA, ordenarNumber, appearsPokemons,
 } from '../src/data';
-
-describe('example', () => {
-  it('debería ser una función', () => {
-    expect(typeof example).toBe('function');
-  });
-});
 
 describe('searchPokemonByName', () => {
   it('debería ser una función', () => {
@@ -82,5 +77,51 @@ describe('readPokemon', () => {
       time: '8:30',
     }];
     expect(readPokemon(data)).toStrictEqual(result);
+  });
+});
+
+describe('ordenarAZ', () => {
+  it('debería ser una función', () => {
+    expect(typeof ordenarAZ).toBe('function');
+  });
+  it('debería retornar el array ordenado alfabeticamente de A-Z', () => {
+    const data = [{ name: 'xli' }, { name: 'dali' }, { name: 'bali' }, { name: 'mali' }, { name: 'ali' }];
+    const result = [{ name: 'ali' }, { name: 'bali' }, { name: 'dali' }, { name: 'mali' }, { name: 'xli' }];
+    expect(ordenarAZ(data)).toStrictEqual(result);
+  });
+});
+
+describe('ordenarZA', () => {
+  it('debería ser una función', () => {
+    expect(typeof ordenarZA).toBe('function');
+  });
+  it('debería retornar el array ordenado alfabeticamente de Z-A', () => {
+    const data = [{ name: 'xli' }, { name: 'dali' }, { name: 'bali' }, { name: 'mali' }, { name: 'ali' }];
+    const result = [{ name: 'xli' }, { name: 'mali' }, { name: 'dali' }, { name: 'bali' }, { name: 'ali' }];
+    expect(ordenarZA(data)).toStrictEqual(result);
+  });
+});
+
+describe('ordenarNumber', () => {
+  it('debería ser una función', () => {
+    expect(typeof ordenarNumber).toBe('function');
+  });
+  it('debería retornar el array ordenado por id de menor a mayor', () => {
+    const data = [{ id: 5 }, { id: 7 }, { id: 4 }, { id: 1 }, { id: 2 }];
+    const result = [{ id: 1 }, { id: 2 }, { id: 4 }, { id: 5 }, { id: 7 }];
+    expect(ordenarNumber(data)).toStrictEqual(result);
+  });
+});
+
+describe('appearsPokemons', () => {
+  it('debería ser una función', () => {
+    expect(typeof appearsPokemons).toBe('function');
+  });
+  it('debería retornar el array ordenado por id de menor a mayor', () => {
+    const data = [{ spawns: 0.042 }, { spawns: 0.017 }, { spawns: 0.253 }, { spawns: 0.012 },
+      { spawns: 0.0031 }];
+    const result = [{ spawns: 0.253 }, { spawns: 0.042 }, { spawns: 0.017 }, { spawns: 0.012 },
+      { spawns: 0.0031 }];
+    expect(appearsPokemons(data)).toStrictEqual(result);
   });
 });

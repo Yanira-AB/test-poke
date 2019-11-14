@@ -1,6 +1,4 @@
 /* eslint-disable linebreak-style */
-export const example = () => 'example';
-export const example2 = () => 'example2';
 /* eslint-disable max-len */
 // eslint-disable-next-line arrow-body-style
 export const readPokemon = (data) => {
@@ -16,14 +14,14 @@ export const readPokemon = (data) => {
   }));
   return pokemonData;
 };
-export const ordenarAZ = (data) => { data.sort((a, b) => (a.name > b.name ? 1 : -1)); };
-export const ordenarZA = (data) => { data.sort((a, b) => (a.name < b.name ? 1 : -1)); };
-export const ordenarNumber = (data) => { data.sort((a, b) => (a.id > b.id ? 1 : -1)); };
+export const ordenarAZ = (data) => { data.sort((a, b) => (a.name > b.name ? 1 : -1)); return data; };
+export const ordenarZA = (data) => { data.sort((a, b) => (a.name < b.name ? 1 : -1)); return data; };
+export const ordenarNumber = (data) => { data.sort((a, b) => (a.id > b.id ? 1 : -1)); return data; };
 // eslint-disable-next-line no-shadow
 export const searchPokemonByName = (data, name) => data.filter((data) => (data.name === name));
 // eslint-disable-next-line no-shadow
 export const findPokemonByCandy = (data, number) => data.filter((data) => (data.candy_num === number));
-export const appearsPokemons = (data) => data.sort((a, b) => (a.spawns < b.spawns ? 1 : -1));
+export const appearsPokemons = (data) => { data.sort((a, b) => (a.spawns < b.spawns ? 1 : -1)); return data; };
 export const filterType = (data, array) => {
   let count = 0;
   const pokemons = [];
