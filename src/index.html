@@ -8,11 +8,12 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css?family=Lemon&display=swap" rel="stylesheet">
+  <link rel=" stylesheet " href=" https://use.fontawesome.com/releases/v5.5.0/css/all.css ">
 </head>
 
 <body>
   <div id="root">
-    <main id="page-0">
+    <main class="page-0">
       <section class="section-1">
         <img class="img-section-1" src="img/web-1.jpg" alt="">
         <div class="link-start" id="link-start-1">POKEMONS</div>
@@ -31,7 +32,7 @@
       </section>
       <section class="logo"><img src="img/web-5.png" alt=""></section>
     </main>
-    <div id="headers">
+    <div id="headers" class="hide">
       <header class="header-desktop">
         <section class="menuLogo">
           <img id="img-logo" src="img/web-5.png" alt="">
@@ -56,22 +57,26 @@
         </section>
       </header>
     </div>
-    <main id="page-1">
+    <main class="page-1 hide">
       <section id="sectionOrderFilter">
         <select id="fieldOrdenar">
           <option selected value="0"> Elige una opción </option>
           <option value="1">Ordenar A-Z</option>
           <option value="2">Ordenar Z-A</option>
-          <option value="3">Ordenar</option>
+          <option value="3">Ordenar Id</option>
+          <option value="4">Ordenar Peso</option>
+          <option value="5">Ordenar Altura</option>
+          <option value="6">Ordenar Huevos</option>
         </select>
         <section id="fieldFind">
           <input type="search" id="textSearch" placeholder="Buscar pokemon...">
-          <input type="button" id="buttonSearch" class="" value="Buscar">
+          <input type="button" id="buttonSearch" class="style_button" value="Buscar">
         </section>
       </section>
       <section class="sectionInitPokemon"></section>
     </main>
-    <main id="page-2">
+
+    <main class="page-2 hide">
       <main id="sectiontFilterType">
         <section class="sectionFilterType">
           <div class="column-movil">
@@ -228,27 +233,45 @@
           </div>
         </section>
         <section class="btn-class">
-          <button id="buttonTypeWeakness" class="style_button" style="vertical-align:middle"><span>Buscar
+          <button id="buttonTypeWeakness" class="style_button-type" style="vertical-align:middle"><span>Buscar
             </span></button>
         </section>
         <section id="sectionFilterTypeWeakness" class="sectionInitPokemon"></section>
       </main>
     </main>
-    <main id="page-3">
+
+    <main class="page-3 hidde">
       <section id="sectionNumberPokemon">
         <input type="number" id="inputNumber" placeholder="Top">
-        <input type="button" id="buttonFastPokemon" class="" value="Buscar">
+        <input type="button" id="buttonFastPokemon" class="style_button" value="Buscar">
       </section>
-      <section class="section10Pokemon"></section>
-      <canvas id="myChart"></canvas>
+      <section id="sectionFastPokemon"></section>
     </main>
-    <main id="page-4">
+    <main class="page-4 hidde">
+      <section id="sectionOrderFilterCandy">
       <section id="sectionNumberCandy">
         <input type="number" id="inputCandy" placeholder="Numero de caramelos...">
-        <input type="button" id="buttonFindCandy" class="" value="Buscar">
+        <input type="button" id="buttonFindCandy" class="style_button" value="Buscar">
+      </section>
+      <select id="fieldOrdenarCandy">
+        <option selected value="0"> Elige una opción </option>
+        <option value="1">Ordenar A-Z</option>
+        <option value="2">Ordenar Z-A</option>
+        <option value="3">Ordenar</option>
+      </select>
       </section>
       <section class="sectionCandyPokemon"></section>
     </main>
+
+    <div id="miModal" class="modal opacity-desactive">
+      <div class="modal-contenido">
+        <a class="closePopup" href="#">X</a>
+        <section class="popupSection1"></section>
+        <section class="popupSection2"></section>
+        <section class="popupSection3"></section>
+      </div>
+    </div>
+
   </div>
   <script type="module" src="main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
