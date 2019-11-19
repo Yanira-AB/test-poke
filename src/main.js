@@ -6,7 +6,7 @@ import POKEMON from './data/pokemon/pokemon.js';
 import {
   ordenarAZ, ordenarZA, ordenarNumber, searchPokemonByName,
   findPokemonByCandy, appearsPokemons, filterType, filterWeak,
-  searchPokemonById, orderByHeight, orderByWeight, orderByEggs,
+  searchPokemonById, orderByHeight, orderByWeight, orderByEggs, orderWeaknesses, orderStronger,
 } from './data.js';
 
 const listPokemones = POKEMON;
@@ -251,6 +251,20 @@ const paintCanvas = (listPaintOfPokemon, number) => {
   });
 };
 
+document.querySelector('#buttonShowSearchType').addEventListener('click', () => {
+  const section = document.querySelector('.sectionFilterType');
+  section.classList.toggle('hide');
+  section.classList.toggle('flex');
+  if (section.getAttribute('class') === 'sectionFilterType flex') {
+    document.querySelector('#buttonShowSearchType').innerHTML = 'Ocultar &#9650';
+    document.querySelector('#buttonShowSearchType').classList.add('style_btn_ocultar');
+    document.querySelector('#buttonTypeWeakness').classList.remove('hide');
+  } else {
+    document.querySelector('#buttonShowSearchType').innerHTML = 'Búsqueda avanzada &#9660';
+    document.querySelector('#buttonTypeWeakness').classList.add('hide');
+  }
+});
+
 document.querySelector('#buttonTypeWeakness').addEventListener('click', () => {
   document.querySelector('#sectionFilterTypeWeakness').innerHTML = '';
   searchTypeWeakness();
@@ -261,6 +275,19 @@ document.getElementById('buttonSearch').addEventListener('click', () => {
   const listPaintOfPokemon = searchPokemonByName(listPokemones, name);
   document.querySelector('.sectionInitPokemon').innerHTML = '';
   paintPokemones(listPaintOfPokemon, '.sectionInitPokemon', listPaintOfPokemon.length);
+});
+
+document.getElementById('topWeaknesses').addEventListener('change', (event) => {
+  event.preventDefault();
+  const ordenarValue = document.getElementById('topWeaknesses').value;
+  let listPaintOfPokemon = '';
+  if (ordenarValue === '1') {
+    listPaintOfPokemon = orderStronger(listPokemones);
+  } else {
+    listPaintOfPokemon = orderWeaknesses(listPokemones);
+  }
+  document.querySelector('#sectionFilterTypeWeakness').innerHTML = '';
+  paintPokemones(listPaintOfPokemon, '#sectionFilterTypeWeakness', listPaintOfPokemon.length);
 });
 
 document.getElementById('fieldOrdenar').addEventListener('change', (event) => {

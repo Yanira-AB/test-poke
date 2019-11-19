@@ -78,7 +78,12 @@
 
     <main class="page-2 hide">
       <main id="sectiontFilterType">
-        <section class="sectionFilterType">
+        <select id="topWeaknesses" class="inputStyle">
+          <option value="0">Ordena por...</option>
+          <option value="1">Los más fuertes</option>
+          <option value="2">Los más débiles</option>
+        </select>
+        <section class="sectionFilterType hide">
           <div class="column-movil">
             <ul>
               <li>NOMBRE</li>
@@ -233,7 +238,10 @@
           </div>
         </section>
         <section class="btn-class">
-          <button id="buttonTypeWeakness" class="style_button-type" style="vertical-align:middle"><span>Buscar
+          <button id="buttonShowSearchType" class="style_button-type" style="vertical-align:middle"><span>Búsqueda
+              avanzada &#9660
+            </span></button>
+          <button id="buttonTypeWeakness" class="style_button-type hide" style="vertical-align:middle"><span>Buscar
             </span></button>
         </section>
         <section id="sectionFilterTypeWeakness" class="sectionInitPokemon"></section>
@@ -249,16 +257,16 @@
     </main>
     <main class="page-4 hidde">
       <section id="sectionOrderFilterCandy">
-      <section id="sectionNumberCandy">
-        <input type="number" id="inputCandy" placeholder="Numero de caramelos...">
-        <input type="button" id="buttonFindCandy" class="style_button" value="Buscar">
-      </section>
-      <select id="fieldOrdenarCandy">
-        <option selected value="0"> Elige una opción </option>
-        <option value="1">Ordenar A-Z</option>
-        <option value="2">Ordenar Z-A</option>
-        <option value="3">Ordenar</option>
-      </select>
+        <section id="sectionNumberCandy">
+          <input type="number" id="inputCandy" placeholder="Numero de caramelos...">
+          <input type="button" id="buttonFindCandy" class="style_button" value="Buscar">
+        </section>
+        <select id="fieldOrdenarCandy">
+          <option selected value="0"> Elige una opción </option>
+          <option value="1">Ordenar A-Z</option>
+          <option value="2">Ordenar Z-A</option>
+          <option value="3">Ordenar</option>
+        </select>
       </section>
       <section class="sectionCandyPokemon"></section>
     </main>

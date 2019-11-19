@@ -2,8 +2,88 @@
 import {
   searchPokemonByName, findPokemonByCandy, filterType, filterWeak, ordenarAZ,
   ordenarZA, ordenarNumber, appearsPokemons, orderByHeight, orderByWeight, arrayMap, arrayMapEgg,
-  orderByEggs,
+  orderByEggs, arrayWeaknesses, orderWeaknesses, orderStronger,
 } from '../src/data';
+
+describe('orderStronger', () => {
+  it('debería ser una función', () => {
+    expect(typeof orderStronger).toBe('function');
+  });
+  it('debería retornar un array con un obj ordenado del pokemon con menos debilidades, al que tiene mas debilidades', () => {
+    const data = [{
+      id: 3, num: '001', name: 'Pikachu', img: 'pokemon.img', weaknesses: ['Fire', 'dark', 'water'],
+    }, {
+      id: 5, num: '001', name: 'Rock', img: 'pokemon.img', weaknesses: ['Fire'],
+    }, {
+      id: 2, num: '001', name: 'Ada', img: 'pokemon.img', weaknesses: ['Fire', 'dark'],
+    }];
+    const result = [{
+      id: 5, num: '001', name: 'Rock', img: 'pokemon.img', weaknesses: ['Fire'],
+    }, {
+      id: 2, num: '001', name: 'Ada', img: 'pokemon.img', weaknesses: ['Fire', 'dark'],
+    }, {
+      id: 3, num: '001', name: 'Pikachu', img: 'pokemon.img', weaknesses: ['Fire', 'dark', 'water'],
+    }];
+    expect(orderStronger(data)).toStrictEqual(result);
+  });
+});
+
+describe('orderWeaknesses', () => {
+  it('debería ser una función', () => {
+    expect(typeof orderWeaknesses).toBe('function');
+  });
+  it('debería retornar un array con un obj ordenado del pokemon con mas debilidades, al que tiene menos debilidades', () => {
+    const data = [{
+      id: 3, num: '001', name: 'Pikachu', img: 'pokemon.img', weaknesses: ['Fire'],
+    }, {
+      id: 2, num: '001', name: 'Ada', img: 'pokemon.img', weaknesses: ['Fire', 'dark'],
+    }, {
+      id: 5, num: '001', name: 'Rock', img: 'pokemon.img', weaknesses: ['Fire', 'dark', 'water'],
+    }];
+    const result = [{
+      id: 5, num: '001', name: 'Rock', img: 'pokemon.img', weaknesses: ['Fire', 'dark', 'water'],
+    }, {
+      id: 2, num: '001', name: 'Ada', img: 'pokemon.img', weaknesses: ['Fire', 'dark'],
+    }, {
+      id: 3, num: '001', name: 'Pikachu', img: 'pokemon.img', weaknesses: ['Fire'],
+    }];
+    expect(orderWeaknesses(data)).toStrictEqual(result);
+  });
+});
+
+describe('arrayWeaknesses', () => {
+  it('debería ser una función', () => {
+    expect(typeof arrayWeaknesses).toBe('function');
+  });
+  it('debería retornar un array con un obj que contegan los items de id, num, name, img y weaknesses', () => {
+    const data = [{
+      id: 1,
+      num: '001',
+      multipliers: [1.58],
+      name: 'Pikachu',
+      img: 'pokemon.img',
+      weaknesses: [
+        'Fire',
+      ],
+      height: '0.71 m',
+      weight: '6.9 kg',
+      egg: '2 km',
+      avg_spawns: 69,
+      spawn_chance: 69,
+      spawn_time: '8:30',
+    }];
+    const result = [{
+      id: 1,
+      num: '001',
+      name: 'Pikachu',
+      img: 'pokemon.img',
+      weaknesses: [
+        'Fire',
+      ],
+    }];
+    expect(arrayWeaknesses(data)).toStrictEqual(result);
+  });
+});
 
 describe('searchPokemonByName', () => {
   it('debería ser una función', () => {

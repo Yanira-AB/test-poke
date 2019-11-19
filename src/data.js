@@ -1,6 +1,16 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable max-len */
 // eslint-disable-next-line arrow-body-style
+export const arrayWeaknesses = (data) => {
+  const arrayCopy = data.map((pokemon) => ({
+    id: pokemon.id,
+    num: pokemon.num,
+    name: pokemon.name,
+    img: pokemon.img,
+    weaknesses: pokemon.weaknesses,
+  }));
+  return arrayCopy;
+};
 
 export const arrayMap = (data) => {
   const arrayCopy = data.map((pokemon) => ({
@@ -28,6 +38,16 @@ export const arrayMapEgg = (data) => {
     egg: parseInt(pokemon.egg.split('km'), 10),
   }));
   return arrayCopy;
+};
+
+export const orderStronger = (data) => {
+  const newData = arrayWeaknesses(data);
+  return newData.sort((a, b) => a.weaknesses.length - b.weaknesses.length);
+};
+
+export const orderWeaknesses = (data) => {
+  const newData = arrayWeaknesses(data);
+  return newData.sort((a, b) => b.weaknesses.length - a.weaknesses.length);
 };
 
 export const ordenarAZ = (data) => {
