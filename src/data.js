@@ -12,6 +12,16 @@ export const arrayWeaknesses = (data) => {
   return arrayCopy;
 };
 
+export const orderStronger = (data) => {
+  const newData = arrayWeaknesses(data);
+  return newData.sort((a, b) => a.weaknesses.length - b.weaknesses.length);
+};
+
+export const orderWeaknesses = (data) => {
+  const newData = arrayWeaknesses(data);
+  return newData.sort((a, b) => b.weaknesses.length - a.weaknesses.length);
+};
+
 export const arrayMap = (data) => {
   const arrayCopy = data.map((pokemon) => ({
     id: pokemon.id,
@@ -20,6 +30,7 @@ export const arrayMap = (data) => {
     img: pokemon.img,
     height: parseFloat(pokemon.height.split('m')),
     weight: parseFloat(pokemon.weight.split('kg')),
+    candy: pokemon.candy,
     egg: pokemon.egg,
     spawn_chance: pokemon.spawn_chance,
     spawn_time: pokemon.spawn_time,
@@ -38,16 +49,6 @@ export const arrayMapEgg = (data) => {
     egg: parseInt(pokemon.egg.split('km'), 10),
   }));
   return arrayCopy;
-};
-
-export const orderStronger = (data) => {
-  const newData = arrayWeaknesses(data);
-  return newData.sort((a, b) => a.weaknesses.length - b.weaknesses.length);
-};
-
-export const orderWeaknesses = (data) => {
-  const newData = arrayWeaknesses(data);
-  return newData.sort((a, b) => b.weaknesses.length - a.weaknesses.length);
 };
 
 export const ordenarAZ = (data) => {
@@ -84,6 +85,17 @@ export const orderByEggs = (data) => {
 
 // eslint-disable-next-line no-shadow
 export const searchPokemonByName = (data, name) => data.filter((data) => (data.name === name));
+export const searchInputPokemonByName = (data, name) => {
+  const pokemon = [];
+  const dataMap = arrayMap(data);
+  dataMap.filter((data) => {
+    const text = data.name.toLowerCase();
+    if (text.indexOf(name) !== -1) {
+      pokemon.push(data);
+    }
+  });
+  return pokemon;
+};
 // eslint-disable-next-line no-shadow
 export const searchPokemonById = (data, id) => data.filter((data) => (data.id === id));
 // eslint-disable-next-line no-shadow
@@ -100,23 +112,21 @@ export const filterType = (data, array) => {
   const pokemons = [];
   for (let index = 0; index < data.length; index += 1) {
     for (let index2 = 0; index2 < array.length; index2 += 1) {
-      if (data[index].type.length > 0) {
-        const element = data[index].type;
-        // eslint-disable-next-line no-loop-func
-        element.filter(((item) => {
-          if (item === array[index2]) {
-            count += 1;
-          }
-          if (data[index].type[data[index].type.length - 1] === item && count === array.length) {
-            pokemons.push(data[index]);
-            count = 0;
-          }
-          if (data[index].type[data[index].type.length - 1] === item && array[array.length - 1] === array[index2]) {
-            count = 0;
-          }
-          return count;
-        }));
-      }
+      const element = data[index].type;
+      // eslint-disable-next-line no-loop-func
+      element.filter(((item) => {
+        if (item === array[index2]) {
+          count += 1;
+        }
+        if (data[index].type[data[index].type.length - 1] === item && count === array.length) {
+          pokemons.push(data[index]);
+          count = 0;
+        }
+        if (data[index].type[data[index].type.length - 1] === item && array[array.length - 1] === array[index2]) {
+          count = 0;
+        }
+        return count;
+      }));
     }
   }
   return pokemons;
@@ -127,23 +137,21 @@ export const filterWeak = (data, array) => {
   const pokemons = [];
   for (let index = 0; index < data.length; index += 1) {
     for (let index2 = 0; index2 < array.length; index2 += 1) {
-      if (data[index].weaknesses.length > 0) {
-        const element = data[index].weaknesses;
-        // eslint-disable-next-line no-loop-func
-        element.filter(((item) => {
-          if (item === array[index2]) {
-            count += 1;
-          }
-          if (data[index].weaknesses[data[index].weaknesses.length - 1] === item && count === array.length) {
-            pokemons.push(data[index]);
-            count = 0;
-          }
-          if (data[index].weaknesses[data[index].weaknesses.length - 1] === item && array[array.length - 1] === array[index2]) {
-            count = 0;
-          }
-          return count;
-        }));
-      }
+      const element = data[index].weaknesses;
+      // eslint-disable-next-line no-loop-func
+      element.filter(((item) => {
+        if (item === array[index2]) {
+          count += 1;
+        }
+        if (data[index].weaknesses[data[index].weaknesses.length - 1] === item && count === array.length) {
+          pokemons.push(data[index]);
+          count = 0;
+        }
+        if (data[index].weaknesses[data[index].weaknesses.length - 1] === item && array[array.length - 1] === array[index2]) {
+          count = 0;
+        }
+        return count;
+      }));
     }
   }
   return pokemons;

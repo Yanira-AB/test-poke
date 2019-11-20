@@ -7,16 +7,23 @@ import {
   ordenarAZ, ordenarZA, ordenarNumber, searchPokemonByName,
   findPokemonByCandy, appearsPokemons, filterType, filterWeak,
   searchPokemonById, orderByHeight, orderByWeight, orderByEggs, orderWeaknesses, orderStronger,
+  searchInputPokemonByName,
 } from './data.js';
 
 const listPokemones = POKEMON;
 const colorsTypeWeak = [['Fighting', '#B04508'], ['Grass', '#59EC10'], ['Poison', '#5910EC'], ['Fire', '#EC4510'], ['Ice', '#10DBEC'], ['Flying', '#7A3B0D'], ['Psychic', '#F31190'], ['Water', '#040496'], ['Ground', '#B98D03'], ['Rock', '#777673'], ['Electric', '#F5B902'], ['Normal', '#A6A9A6'], ['Dragon', '#A90904'], ['Fairy', '#FA70CF'], ['Ghost', '#5D0642'], ['Dark', '#090909'], ['Steel', '#626060'], ['Bug', '#156506']];
-let listPaintPokemonCandy = '';
+let listPokemonCandy = '';
 
 const cleanPopup = () => {
   document.querySelector('.popupSection1').innerHTML = '';
   document.querySelector('.popupSection2').innerHTML = '';
   document.querySelector('.popupSection3').innerHTML = '';
+};
+
+const cleanPage = () => {
+  document.querySelector('#sectionFilterTypeWeakness').innerHTML = '';
+  document.querySelector('#sectionFastPokemon').innerHTML = '';
+  document.querySelector('.sectionCandyPokemon').innerHTML = '';
 };
 
 document.querySelector('.closePopup').addEventListener('click', () => {
@@ -147,6 +154,7 @@ const paintPopupEvolution = (pokemon) => {
 
 const showPokemon = (idPokemon) => {
   const pokemon = searchPokemonById(POKEMON, parseInt(idPokemon, 10));
+  cleanPopup();
   // section-popup-1
   paintPopupProperty(pokemon);
   // section-popup-2
@@ -171,6 +179,8 @@ const paintPokemones = (listPaintOfPokemon, sectionPaint, indexEnd) => {
     pokemonImg.src = listPaintOfPokemon[j].img;
     if (sectionPaint === '#sectionFastPokemon') {
       pokemonNum.textContent = `Hora: ${listPaintOfPokemon[j].spawn_time}`;
+    } else if (sectionPaint === '.sectionCandyPokemon') {
+      pokemonNum.textContent = `${listPaintOfPokemon[j].candy}`;
     } else {
       pokemonNum.textContent = `No. ${listPaintOfPokemon[j].num}`;
     }
@@ -315,21 +325,25 @@ document.getElementById('fieldOrdenarCandy').addEventListener('change', (event) 
   event.preventDefault();
   const ordenarValue = document.getElementById('fieldOrdenarCandy').value;
   parseInt(document.querySelector('#inputCandy').value, 10);
+  let listPaintPokemonCandy;
   if (ordenarValue === '1') {
-    listPaintPokemonCandy = ordenarAZ(listPaintPokemonCandy);
+    listPaintPokemonCandy = ordenarAZ(listPokemonCandy);
   } else if (ordenarValue === '2') {
-    listPaintPokemonCandy = ordenarZA(listPaintPokemonCandy);
+    listPaintPokemonCandy = ordenarZA(listPokemonCandy);
   } else {
-    listPaintPokemonCandy = ordenarNumber(listPaintPokemonCandy);
+    listPaintPokemonCandy = ordenarNumber(listPokemonCandy);
   }
+  // eslint-disable-next-line no-console
+  console.log(listPaintPokemonCandy);
   document.querySelector('.sectionCandyPokemon').innerHTML = '';
   paintPokemones(listPaintPokemonCandy, '.sectionCandyPokemon', listPaintPokemonCandy.length);
 });
 
 document.querySelector('#buttonFindCandy').addEventListener('click', () => {
+  document.querySelector('.sectionCandyPokemon').innerHTML = '';
   const numberOfCandy = parseInt(document.querySelector('#inputCandy').value, 10);
-  listPaintPokemonCandy = findPokemonByCandy(listPokemones, numberOfCandy);
-  paintPokemones(listPaintPokemonCandy, '.sectionCandyPokemon', listPaintPokemonCandy.length);
+  listPokemonCandy = findPokemonByCandy(listPokemones, numberOfCandy);
+  paintPokemones(listPokemonCandy, '.sectionCandyPokemon', listPokemonCandy.length);
 });
 
 document.querySelector('#buttonFastPokemon').addEventListener('click', () => {
@@ -340,142 +354,216 @@ document.querySelector('#buttonFastPokemon').addEventListener('click', () => {
   paintPokemones(listPaintOfPokemon, '#sectionFastPokemon', number);
 });
 
+document.querySelector('#textSearch').addEventListener('keyup', () => {
+  document.querySelector('.sectionInitPokemon').innerHTML = '';
+  const input = document.querySelector('#textSearch').value;
+  const listPaintOfPokemon = searchInputPokemonByName(POKEMON, input);
+  paintPokemones(listPaintOfPokemon, '.sectionInitPokemon', listPaintOfPokemon.length);
+});
+
 document.querySelector('.section-1').addEventListener('click', () => {
-  document.querySelector('#headers').style.display = 'flex';
-  document.querySelector('.page-1').style.display = 'flex';
-  document.querySelector('.page-2').style.display = 'none';
-  document.querySelector('.page-3').style.display = 'none';
-  document.querySelector('.page-4').style.display = 'none';
-  document.querySelector('.page-0').style.display = 'none';
+  document.querySelector('#headers').classList.remove('hide');
+  document.querySelector('#headers').classList.add('flex');
+  document.querySelector('.page-1').classList.remove('hide');
+  document.querySelector('.page-1').classList.add('flex');
+  document.querySelector('.page-2').classList.remove('flex');
+  document.querySelector('.page-2').classList.add('hide');
+  document.querySelector('.page-3').classList.remove('flex');
+  document.querySelector('.page-3').classList.add('hide');
+  document.querySelector('.page-4').classList.remove('flex');
+  document.querySelector('.page-4').classList.add('hide');
+  document.querySelector('.page-0').classList.remove('flex');
+  document.querySelector('.page-0').classList.add('hide');
+  document.querySelector('.body').classList.remove('background-none');
+  document.querySelector('.body').classList.add('background');
   paintPokemones(listPokemones, '.sectionInitPokemon', listPokemones.length);
 });
 
 document.querySelector('.section-2').addEventListener('click', () => {
-  document.querySelector('#headers').style.display = 'flex';
-  document.querySelector('.page-1').style.display = 'none';
-  document.querySelector('.page-2').style.display = 'flex';
-  document.querySelector('.page-3').style.display = 'none';
-  document.querySelector('.page-4').style.display = 'none';
-  document.querySelector('.page-0').style.display = 'none';
+  document.querySelector('#headers').classList.remove('hide');
+  document.querySelector('#headers').classList.add('flex');
+  document.querySelector('.page-1').classList.remove('flex');
+  document.querySelector('.page-1').classList.add('hide');
+  document.querySelector('.page-2').classList.remove('hide');
+  document.querySelector('.page-2').classList.add('flex');
+  document.querySelector('.page-3').classList.remove('flex');
+  document.querySelector('.page-3').classList.add('hide');
+  document.querySelector('.page-4').classList.remove('flex');
+  document.querySelector('.page-4').classList.add('hide');
+  document.querySelector('.page-0').classList.remove('flex');
+  document.querySelector('.page-0').classList.add('hide');
+  document.querySelector('.body').classList.remove('background-none');
+  document.querySelector('.body').classList.add('background');
 });
 
 document.querySelector('.section-3').addEventListener('click', () => {
-  document.querySelector('#headers').style.display = 'flex';
-  document.querySelector('.page-1').style.display = 'none';
-  document.querySelector('.page-2').style.display = 'none';
-  document.querySelector('.page-3').style.display = 'flex';
-  document.querySelector('.page-4').style.display = 'none';
-  document.querySelector('.page-0').style.display = 'none';
+  document.querySelector('#headers').classList.remove('hide');
+  document.querySelector('#headers').classList.add('flex');
+  document.querySelector('.page-1').classList.remove('flex');
+  document.querySelector('.page-1').classList.add('hide');
+  document.querySelector('.page-2').classList.remove('flex');
+  document.querySelector('.page-2').classList.add('hide');
+  document.querySelector('.page-3').classList.remove('hide');
+  document.querySelector('.page-3').classList.add('flex');
+  document.querySelector('.page-4').classList.remove('flex');
+  document.querySelector('.page-4').classList.add('hide');
+  document.querySelector('.page-0').classList.remove('flex');
+  document.querySelector('.page-0').classList.add('hide');
+  document.querySelector('.body').classList.remove('background-none');
+  document.querySelector('.body').classList.add('background');
   const listPaintOfPokemon = appearsPokemons(listPokemones);
   paintCanvas(listPaintOfPokemon, 10);
   paintPokemones(listPaintOfPokemon, '#sectionFastPokemon', 10);
 });
 
 document.querySelector('.section-4').addEventListener('click', () => {
-  document.querySelector('#headers').style.display = 'flex';
-  document.querySelector('.page-1').style.display = 'none';
-  document.querySelector('.page-2').style.display = 'none';
-  document.querySelector('.page-3').style.display = 'none';
-  document.querySelector('.page-4').style.display = 'flex';
-  document.querySelector('.page-0').style.display = 'none';
+  document.querySelector('#headers').classList.remove('hide');
+  document.querySelector('#headers').classList.add('flex');
+  document.querySelector('.page-1').classList.remove('flex');
+  document.querySelector('.page-1').classList.add('hide');
+  document.querySelector('.page-2').classList.remove('flex');
+  document.querySelector('.page-2').classList.add('hide');
+  document.querySelector('.page-3').classList.remove('flex');
+  document.querySelector('.page-3').classList.add('hide');
+  document.querySelector('.page-4').classList.remove('hide');
+  document.querySelector('.page-4').classList.add('flex');
+  document.querySelector('.page-0').classList.remove('flex');
+  document.querySelector('.page-0').classList.add('hide');
+  document.querySelector('.body').classList.remove('background-none');
+  document.querySelector('.body').classList.add('background');
 });
 
 document.querySelector('#linkMenu1-movil').addEventListener('click', () => {
-  document.querySelector('#headers').style.display = 'flex';
-  document.querySelector('.page-1').style.display = 'flex';
-  document.querySelector('.page-2').style.display = 'none';
-  document.querySelector('.page-3').style.display = 'none';
-  document.querySelector('.page-4').style.display = 'none';
-  document.querySelector('.page-0').style.display = 'none';
+  document.querySelector('#headers').classList.add('flex');
+  document.querySelector('.page-1').classList.add('flex');
+  document.querySelector('.page-2').classList.add('hide');
+  document.querySelector('.page-3').classList.add('hide');
+  document.querySelector('.page-4').classList.add('hide');
+  document.querySelector('.page-0').classList.add('hide');
   paintPokemones(listPokemones, '.sectionInitPokemon', listPokemones.length);
 });
 
 document.querySelector('#linkMenu2-movil').addEventListener('click', () => {
-  document.querySelector('#headers').style.display = 'flex';
-  document.querySelector('.page-1').style.display = 'none';
-  document.querySelector('.page-2').style.display = 'flex';
-  document.querySelector('.page-3').style.display = 'none';
-  document.querySelector('.page-4').style.display = 'none';
-  document.querySelector('.page-0').style.display = 'none';
+  document.querySelector('#headers').classList.add('flex');
+  document.querySelector('.page-1').classList.add('hide');
+  document.querySelector('.page-2').classList.add('flex');
+  document.querySelector('.page-3').classList.add('hide');
+  document.querySelector('.page-4').classList.add('hide');
+  document.querySelector('.page-0').classList.add('hide');
 });
 
 document.querySelector('#linkMenu3-movil').addEventListener('click', () => {
-  document.querySelector('#headers').style.display = 'flex';
-  document.querySelector('.page-1').style.display = 'none';
-  document.querySelector('.page-2').style.display = 'none';
-  document.querySelector('.page-3').style.display = 'flex';
-  document.querySelector('.page-4').style.display = 'none';
-  document.querySelector('.page-0').style.display = 'none';
+  document.querySelector('#headers').classList.add('flex');
+  document.querySelector('.page-1').classList.add('hide');
+  document.querySelector('.page-2').classList.add('hide');
+  document.querySelector('.page-3').classList.add('flex');
+  document.querySelector('.page-4').classList.add('hide');
+  document.querySelector('.page-0').classList.add('hide');
   const listPaintOfPokemon = appearsPokemons(listPokemones);
   paintCanvas(listPaintOfPokemon, 10);
   paintPokemones(listPaintOfPokemon, '#sectionFastPokemon', 10);
 });
 
 document.querySelector('#linkMenu4-movil').addEventListener('click', () => {
-  document.querySelector('#headers').style.display = 'flex';
-  document.querySelector('.page-1').style.display = 'none';
-  document.querySelector('.page-2').style.display = 'none';
-  document.querySelector('.page-3').style.display = 'none';
-  document.querySelector('.page-4').style.display = 'flex';
-  document.querySelector('.page-0').style.display = 'none';
+  document.querySelector('#headers').classList.add('flex');
+  document.querySelector('.page-1').classList.add('hide');
+  document.querySelector('.page-2').classList.add('hide');
+  document.querySelector('.page-3').classList.add('hide');
+  document.querySelector('.page-4').classList.add('flex');
+  document.querySelector('.page-0').classList.add('hide');
 });
 
 document.querySelector('#img-logo').addEventListener('click', () => {
-  document.querySelector('#headers').style.display = 'none';
-  document.querySelector('.page-1').style.display = 'none';
-  document.querySelector('.page-2').style.display = 'none';
-  document.querySelector('.page-3').style.display = 'none';
-  document.querySelector('.page-4').style.display = 'none';
-  document.querySelector('.page-0').style.display = 'flex';
+  document.querySelector('#headers').classList.remove('flex');
+  document.querySelector('#headers').classList.add('hide');
+  document.querySelector('.page-1').classList.remove('flex');
+  document.querySelector('.page-1').classList.add('hide');
+  document.querySelector('.page-2').classList.remove('flex');
+  document.querySelector('.page-2').classList.add('hide');
+  document.querySelector('.page-3').classList.remove('flex');
+  document.querySelector('.page-3').classList.add('hide');
+  document.querySelector('.page-4').classList.remove('flex');
+  document.querySelector('.page-4').classList.add('hide');
+  document.querySelector('.page-0').classList.remove('hide');
+  document.querySelector('.page-0').classList.add('flex');
+  document.querySelector('.body').classList.remove('background');
+  document.querySelector('.body').classList.add('background-none');
 });
 
 document.querySelector('#img-logo-movil').addEventListener('click', () => {
-  document.querySelector('#headers').style.display = 'none';
-  document.querySelector('.page-1').style.display = 'none';
-  document.querySelector('.page-2').style.display = 'none';
-  document.querySelector('.page-3').style.display = 'none';
-  document.querySelector('.page-4').style.display = 'none';
-  document.querySelector('.page-0').style.display = 'flex';
+  document.querySelector('#headers').classList.add('hide');
+  document.querySelector('.page-1').classList.add('hide');
+  document.querySelector('.page-2').classList.add('hide');
+  document.querySelector('.page-3').classList.add('hide');
+  document.querySelector('.page-4').classList.add('hide');
+  document.querySelector('.page-0').classList.add('flex');
 });
 
 document.querySelector('.linkMenu1').addEventListener('click', () => {
-  document.querySelector('#headers').style.display = 'flex';
-  document.querySelector('.page-1').style.display = 'flex';
-  document.querySelector('.page-2').style.display = 'none';
-  document.querySelector('.page-3').style.display = 'none';
-  document.querySelector('.page-4').style.display = 'none';
-  document.querySelector('.page-0').style.display = 'none';
+  document.querySelector('.page-0').classList.remove('flex');
+  document.querySelector('.page-0').classList.add('hide');
+  document.querySelector('#headers').classList.remove('hide');
+  document.querySelector('#headers').classList.add('flex');
+  document.querySelector('.page-1').classList.remove('hide');
+  document.querySelector('.page-1').classList.add('flex');
+  document.querySelector('.page-2').classList.remove('flex');
+  document.querySelector('.page-2').classList.add('hide');
+  document.querySelector('.page-3').classList.remove('flex');
+  document.querySelector('.page-3').classList.add('hide');
+  document.querySelector('.page-4').classList.remove('flex');
+  document.querySelector('.page-4').classList.add('hide');
+  document.querySelector('.body').classList.remove('background-none');
+  document.querySelector('.body').classList.add('background');
+  cleanPage();
   paintPokemones(listPokemones, '.sectionInitPokemon', listPokemones.length);
 });
 
 document.querySelector('.linkMenu2').addEventListener('click', () => {
-  document.querySelector('#headers').style.display = 'flex';
-  document.querySelector('.page-1').style.display = 'none';
-  document.querySelector('.page-2').style.display = 'flex';
-  document.querySelector('.page-3').style.display = 'none';
-  document.querySelector('.page-4').style.display = 'none';
-  document.querySelector('.page-0').style.display = 'none';
+  document.querySelector('#headers').classList.add('flex');
+  document.querySelector('.page-1').classList.remove('flex');
+  document.querySelector('.page-1').classList.add('hide');
+  document.querySelector('.page-2').classList.remove('hide');
+  document.querySelector('.page-2').classList.add('flex');
+  document.querySelector('.page-3').classList.remove('flex');
+  document.querySelector('.page-3').classList.add('hide');
+  document.querySelector('.page-4').classList.remove('flex');
+  document.querySelector('.page-4').classList.add('hide');
+  document.querySelector('.page-0').classList.remove('flex');
+  document.querySelector('.page-0').classList.add('hide');
+  cleanPage();
 });
 
 document.querySelector('.linkMenu3').addEventListener('click', () => {
-  document.querySelector('#headers').style.display = 'flex';
-  document.querySelector('.page-1').style.display = 'none';
-  document.querySelector('.page-2').style.display = 'none';
-  document.querySelector('.page-3').style.display = 'flex';
-  document.querySelector('.page-4').style.display = 'none';
-  document.querySelector('.page-0').style.display = 'none';
+  document.querySelector('#headers').classList.add('flex');
+  document.querySelector('.page-1').classList.remove('flex');
+  document.querySelector('.page-1').classList.add('hide');
+  document.querySelector('.page-2').classList.remove('flex');
+  document.querySelector('.page-2').classList.add('hide');
+  document.querySelector('.page-3').classList.remove('hide');
+  document.querySelector('.page-3').classList.add('flex');
+  document.querySelector('.page-4').classList.remove('flex');
+  document.querySelector('.page-4').classList.add('hide');
+  document.querySelector('.page-0').classList.remove('flex');
+  document.querySelector('.page-0').classList.add('hide');
+  cleanPage();
   const listPaintOfPokemon = appearsPokemons(listPokemones);
   paintCanvas(listPaintOfPokemon, 10);
   paintPokemones(listPaintOfPokemon, '#sectionFastPokemon', 10);
 });
 
 document.querySelector('.linkMenu4').addEventListener('click', () => {
-  document.querySelector('#headers').style.display = 'flex';
-  document.querySelector('.page-1').style.display = 'none';
-  document.querySelector('.page-2').style.display = 'none';
-  document.querySelector('.page-3').style.display = 'none';
-  document.querySelector('.page-4').style.display = 'flex';
-  document.querySelector('.page-0').style.display = 'none';
+  document.querySelector('#headers').classList.add('flex');
+  document.querySelector('.page-1').classList.remove('flex');
+  document.querySelector('.page-1').classList.add('hide');
+  document.querySelector('.page-2').classList.remove('flex');
+  document.querySelector('.page-2').classList.add('hide');
+  document.querySelector('.page-3').classList.remove('flex');
+  document.querySelector('.page-3').classList.add('hide');
+  document.querySelector('.page-4').classList.remove('hide');
+  document.querySelector('.page-4').classList.add('flex');
+  document.querySelector('.page-0').classList.remove('flex');
+  document.querySelector('.page-0').classList.add('hide');
+  cleanPage();
 });
 
 document.querySelector('#btn-menu-movil').addEventListener('mouseover', () => {

@@ -1,4 +1,11 @@
 /*estilos pagina inicial*/
+.background-none{
+    background-image: none;
+}
+
+.background{
+    background-image: url(img/background.jpg);
+}
 
 .page-0{
     height: 90vh;    
@@ -133,12 +140,16 @@ header{
     background-color: #FEEF49;
 }
 
-#sectionOrderFilter {
+#sectionOrderFilter, #sectionOrderFilterCandy{
     display: flex;
     justify-content: space-between;
     width: 100%;
     height: 5%;
     margin: 10px 10px;
+}
+
+#inputCandy{
+    width: 60%;
 }
 
 #sectionNumberCandy{
@@ -489,6 +500,14 @@ input[type=checkbox] {
     border: 3px solid #a83715;
   }
 
+  .header-movil {
+      display: none;
+  }
+
+  .linkMenu1, .linkMenu2, .linkMenu3, .linkMenu4, #linkMenu1-movil, #linkMenu2-movil, #linkMenu3-movil, #linkMenu4-movil, .section-1, .section-2, .section-3, .section-4 {
+      cursor: pointer;
+  }
+
   .style_btn_ocultar {
     display: inline-block;
     border-radius: 4px;
@@ -510,15 +529,6 @@ input[type=checkbox] {
     border: 3px solid #777777;
     color: white;
   }
-
-  .header-movil {
-      display: none;
-  }
-
-  .linkMenu1, .linkMenu2, .linkMenu3, .linkMenu4, #linkMenu1-movil, #linkMenu2-movil, #linkMenu3-movil, #linkMenu4-movil, .section-1, .section-2, .section-3, .section-4 {
-      cursor: pointer;
-  }
-
 
 @media screen and (max-width:1080px){
     section a{
@@ -559,25 +569,26 @@ input[type=checkbox] {
         width: 100%;
         height: 25%;
         flex-direction: row;
+        position: relative;
     }
     
-    section div{
+    .link-start{
         position: absolute;
-        top: 20%;
-        width: 50%;
-        left:40%;
-        font-size: 50px;
+        top: 35%;
+        width: 45%;
+        left:50%;
+        font-size: 40px;
         text-align: right;
-   }
+    }
 
    .logo{
-    left: 35%;
+    left: 33%;
     top:0;
     }
 
    .logo img{
-    width: 40%;
-    height: 20%;
+    width: 250px;
+    height: 100px;
     }
 
     .section-1 div{
@@ -696,11 +707,29 @@ input[type=checkbox] {
 }
 
 @media screen and (max-width:600px){
-    section div{
+    .link-start{
         font-size: 35px;
         text-align: center;
         top: 30%;
-   }
+        left: 40%;
+ }
+
+ .logo img{
+    width: 50%;
+    height: 40%;
+    }
+}
+
+@media screen and (max-width:450px){
+    .link-start{
+        font-size: 30px;
+        left: 35%;
+ }
+
+ .logo img{
+    width: 150px;
+    height: 70px;
+    }
 }
 
 .hide {
@@ -827,12 +856,16 @@ input[type=checkbox] {
       justify-content: space-around;
    }
 
+   .icon-circle-with-cross{
+       font-size: 25px;
+       color:rgb(184, 179, 179);
+       position: right;
+   }
+
    .closePopup{
-       justify-content: right;
-       align-content: right;
-       align-items: right;
-       text-align: right;
-       width: 100%;
+       position: relative;
+       text-decoration: none;
+       left: 95%;
    }
 
   .cardEvolution{
@@ -874,31 +907,22 @@ input[type=checkbox] {
     opacity:0;
     pointer-events:none;
   }
-
-  .hidde{
-    display: none;
-  }
-
-  .flex{
-      display: flex;
-  }
-
   #sectiontFilterType {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-  }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-  .inputStyle {
-    width: 200px;
-    margin-bottom: 30px;
-    margin-top: 30px;
-    height: 36px;
-    padding-left: 8px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 18px;
-    color: rgb(88, 88, 88);
-    border-radius: 8px;
-    border: rgb(122, 70, 70) 1.5px solid;
-    box-shadow: 0 0 10px rgb(136, 60, 60);
-  }
+.inputStyle {
+  width: 200px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  height: 36px;
+  padding-left: 8px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: 18px;
+  color: rgb(88, 88, 88);
+  border-radius: 8px;
+  border: rgb(122, 70, 70) 1.5px solid;
+  box-shadow: 0 0 10px rgb(136, 60, 60);
+}
