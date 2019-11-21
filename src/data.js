@@ -88,10 +88,11 @@ export const searchPokemonByName = (data, name) => data.filter((data) => (data.n
 export const searchInputPokemonByName = (data, name) => {
   const pokemon = [];
   const dataMap = arrayMap(data);
-  dataMap.filter((data) => {
-    const text = data.name.toLowerCase();
+  // eslint-disable-next-line array-callback-return
+  dataMap.filter((element) => {
+    const text = element.name.toLowerCase();
     if (text.indexOf(name) !== -1) {
-      pokemon.push(data);
+      pokemon.push(element);
     }
   });
   return pokemon;

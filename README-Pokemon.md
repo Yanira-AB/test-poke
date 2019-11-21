@@ -3,18 +3,15 @@
 Hemos creado una página web para los usuarios del juego de Pokémon Go, contiene datos claves sobre los pokemones 
 que son de mucha ayuda para los jugadores de ésta aplicación.
 
-La página tiene 4 pestañas, la primera pestaña se llama 'Pokemons', donde aparecen todos los poquemones y dos clases de filtros, uno 
-para que busques al pokemon por nombre y otro para que los puedas ordenar de manera alfabética ya sea de A-Z, de Z-A o por 
-su número de ID de menoar a mayor.
+La página tiene 4 pestañas, la primera pestaña se llama 'Pokemons', donde aparecen todos los pokemones y dos clases de filtros, un buscador a tiempo real donde te muestra los pokemons que coincidan con las letras que ingresas (por nombre) y otro para que los puedas ordenar de manera alfabética ya sea de A-Z, de Z-A, por su número de ID de menor a mayor, por su peso (de menor a mayor), por distancia de sus huevos (del mas cercano al mas lejano) y por su altura (de menor a mayor).
 
-La segunda pestaña se llama 'Pokedex', en esta pestaña encontramos un filtro avanzado donde puedes encontrar al pokemon que desees 
-segun su Tipo y Debilidad.
+La segunda pestaña se llama 'Pokedex', en esta pestaña encontramos un filtro avanzado donde puedes encontrar al pokemon que desees segun su Tipo y Debilidad, aquí tienes dos opciones, ordenar a los pokemons del mas fuerte al mas débil o del 
+mas débil al más fuerte o el filtro avanzado donde seleccionas el tipo o debilidad que deseas encontrar en un pokemon y 
+filtras de acuerdo a esos items.
 
-La tercera pestaña es 'Top 10', donde se muestra el top de 10 de los pokemones que más aparecen en el juego, de forma adicional 
-hay un campo donde puedes editar la cantidad de Pokemones que aparecen y poder ver los 20 pokemones que más aparecen
-o tan solo los 2 primeros, etc.
+La tercera pestaña es 'Top 10', donde se muestra el top de 10 de los pokemones que más aparecen en el juego, de forma adicional hay un campo donde puedes editar la cantidad de Pokemones que aparecen y poder ver por ejemplo los 20 pokemones que más aparecen o tan solo los 2 primeros, etc. Y de manera adicional te brinda un gráfico circular con los porcentajes  que cambia de acuerdo al resultado de tu búsqueda.
 
-La ultima pestaña de la página es 'Candys', aquí podrás saber qué pokemons pueden lograr evolucionar con el
+La última pestaña de la página es 'Candys', aquí podrás saber qué pokemons pueden lograr evolucionar con el
 número de caramelos que ingreses.
 
 ![Pokemon](/src/img/final.png "Resultado Final")
@@ -41,8 +38,8 @@ número de caramelos que ingreses.
     
     - La pestaña 'Pokedex' te brinda un filtro avanzado donde puedes filtrar a los pokemones de acuerdo 
     a sus tipos y debilidades.
-    
-    - En la pestaña 'Top 10' de los pokemons con menos debilidades.
+
+    - En la pestaña 'Pokedex' te brinda también la opcion de ordenar de : el pokemon mas fuerte al mas débil o del mas débil al mas fuerte.
     
     - En el modal con la ficha del pokemon donde aparecen todas las caracteristicas de tipo, peso, etc, también 
     aparecen sus evoluciones de antes y después.

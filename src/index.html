@@ -49,16 +49,16 @@
           <button id="btn-menu-movil" class="btn-menu-movil"><img src="img/menu-movil.png" alt=""></button>
         </section>
         <section class="menu-movil hide">
-          <div id="linkMenu1-movil" class="linkMenu1">POKEMONS</div>
-          <div id="linkMenu2-movil" class="linkMenu2">POKEDEX</div>
-          <div id="linkMenu3-movil" class="linkMenu3">TOP 10</div>
-          <div id="linkMenu4-movil" class="linkMenu4">CANDYS</div>
+          <div id="linkMenu1-movil" class="linkMenu1 linkMenu-movil">POKEMONS</div>
+          <div id="linkMenu2-movil" class="linkMenu2 linkMenu-movil">POKEDEX</div>
+          <div id="linkMenu3-movil" class="linkMenu3 linkMenu-movil">TOP 10</div>
+          <div id="linkMenu4-movil" class="linkMenu4 linkMenu-movil">CANDYS</div>
         </section>
       </header>
     </div>
     <main class="page-1 hide">
       <section id="sectionOrderFilter">
-        <select id="fieldOrdenar">
+        <select id="fieldOrdenar" class="inputStyle-grey">
           <option selected value="0"> Elige una opción </option>
           <option value="1">Ordenar A-Z</option>
           <option value="2">Ordenar Z-A</option>
@@ -68,8 +68,8 @@
           <option value="6">Ordenar Huevos</option>
         </select>
         <section id="fieldFind">
-          <input type="search" id="textSearch" placeholder="Buscar pokemon...">
-          <input type="button" id="buttonSearch" class="style_button" value="Buscar">
+          <input type="search" id="textSearch" class="inputStyle-grey" placeholder="Buscar pokemon...">
+          <input type="button" id="buttonSearch" class="inputStyle-grey" value="Buscar">
         </section>
       </section>
       <section class="sectionInitPokemon"></section>
@@ -249,18 +249,18 @@
 
     <main class="page-3 hide">
       <section id="sectionNumberPokemon">
-        <input type="number" id="inputNumber" placeholder="Top">
-        <input type="button" id="buttonFastPokemon" class="style_button" value="Buscar">
+        <input type="number" id="inputNumber" placeholder="Top" class="inputStyle-grey">
+        <input type="button" id="buttonFastPokemon" class="inputStyle-grey" value="Buscar">
       </section>
       <section id="sectionFastPokemon"></section>
     </main>
     <main class="page-4 hide">
       <section id="sectionOrderFilterCandy">
         <section id="sectionNumberCandy">
-          <input type="number" id="inputCandy" placeholder="Numero de caramelos...">
-          <input type="button" id="buttonFindCandy" class="style_button" value="Buscar">
+          <input type="number" id="inputCandy" placeholder="Numero de caramelos..." class="inputStyle-grey">
+          <input type="button" id="buttonFindCandy" class="inputStyle-grey" value="Buscar">
         </section>
-        <select id="fieldOrdenarCandy">
+        <select id="fieldOrdenarCandy" class="inputStyle-grey">
           <option selected value="0"> Elige una opción </option>
           <option value="1">Ordenar A-Z</option>
           <option value="2">Ordenar Z-A</option>

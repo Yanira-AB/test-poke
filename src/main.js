@@ -24,6 +24,7 @@ const cleanPage = () => {
   document.querySelector('#sectionFilterTypeWeakness').innerHTML = '';
   document.querySelector('#sectionFastPokemon').innerHTML = '';
   document.querySelector('.sectionCandyPokemon').innerHTML = '';
+  document.querySelector('.sectionInitPokemon').innerHTML = '';
 };
 
 document.querySelector('.closePopup').addEventListener('click', () => {
@@ -376,6 +377,7 @@ document.querySelector('.section-1').addEventListener('click', () => {
   document.querySelector('.page-0').classList.add('hide');
   document.querySelector('.body').classList.remove('background-none');
   document.querySelector('.body').classList.add('background');
+  cleanPage();
   paintPokemones(listPokemones, '.sectionInitPokemon', listPokemones.length);
 });
 
@@ -394,6 +396,7 @@ document.querySelector('.section-2').addEventListener('click', () => {
   document.querySelector('.page-0').classList.add('hide');
   document.querySelector('.body').classList.remove('background-none');
   document.querySelector('.body').classList.add('background');
+  cleanPage();
 });
 
 document.querySelector('.section-3').addEventListener('click', () => {
@@ -411,6 +414,7 @@ document.querySelector('.section-3').addEventListener('click', () => {
   document.querySelector('.page-0').classList.add('hide');
   document.querySelector('.body').classList.remove('background-none');
   document.querySelector('.body').classList.add('background');
+  cleanPage();
   const listPaintOfPokemon = appearsPokemons(listPokemones);
   paintCanvas(listPaintOfPokemon, 10);
   paintPokemones(listPaintOfPokemon, '#sectionFastPokemon', 10);
@@ -431,34 +435,53 @@ document.querySelector('.section-4').addEventListener('click', () => {
   document.querySelector('.page-0').classList.add('hide');
   document.querySelector('.body').classList.remove('background-none');
   document.querySelector('.body').classList.add('background');
+  cleanPage();
 });
 
 document.querySelector('#linkMenu1-movil').addEventListener('click', () => {
   document.querySelector('#headers').classList.add('flex');
+  document.querySelector('.page-1').classList.remove('hide');
   document.querySelector('.page-1').classList.add('flex');
+  document.querySelector('.page-2').classList.remove('flex');
   document.querySelector('.page-2').classList.add('hide');
+  document.querySelector('.page-3').classList.remove('flex');
   document.querySelector('.page-3').classList.add('hide');
+  document.querySelector('.page-4').classList.remove('flex');
   document.querySelector('.page-4').classList.add('hide');
+  document.querySelector('.page-0').classList.remove('flex');
   document.querySelector('.page-0').classList.add('hide');
+  cleanPage();
   paintPokemones(listPokemones, '.sectionInitPokemon', listPokemones.length);
 });
 
 document.querySelector('#linkMenu2-movil').addEventListener('click', () => {
   document.querySelector('#headers').classList.add('flex');
+  document.querySelector('.page-1').classList.remove('flex');
   document.querySelector('.page-1').classList.add('hide');
+  document.querySelector('.page-2').classList.remove('hide');
   document.querySelector('.page-2').classList.add('flex');
+  document.querySelector('.page-3').classList.remove('flex');
   document.querySelector('.page-3').classList.add('hide');
+  document.querySelector('.page-4').classList.remove('flex');
   document.querySelector('.page-4').classList.add('hide');
+  document.querySelector('.page-0').classList.remove('flex');
   document.querySelector('.page-0').classList.add('hide');
+  cleanPage();
 });
 
 document.querySelector('#linkMenu3-movil').addEventListener('click', () => {
   document.querySelector('#headers').classList.add('flex');
+  document.querySelector('.page-1').classList.remove('flex');
   document.querySelector('.page-1').classList.add('hide');
+  document.querySelector('.page-2').classList.remove('flex');
   document.querySelector('.page-2').classList.add('hide');
+  document.querySelector('.page-3').classList.remove('hide');
   document.querySelector('.page-3').classList.add('flex');
+  document.querySelector('.page-4').classList.remove('flex');
   document.querySelector('.page-4').classList.add('hide');
+  document.querySelector('.page-0').classList.remove('flex');
   document.querySelector('.page-0').classList.add('hide');
+  cleanPage();
   const listPaintOfPokemon = appearsPokemons(listPokemones);
   paintCanvas(listPaintOfPokemon, 10);
   paintPokemones(listPaintOfPokemon, '#sectionFastPokemon', 10);
@@ -466,11 +489,17 @@ document.querySelector('#linkMenu3-movil').addEventListener('click', () => {
 
 document.querySelector('#linkMenu4-movil').addEventListener('click', () => {
   document.querySelector('#headers').classList.add('flex');
+  document.querySelector('.page-1').classList.remove('flex');
   document.querySelector('.page-1').classList.add('hide');
+  document.querySelector('.page-2').classList.remove('flex');
   document.querySelector('.page-2').classList.add('hide');
+  document.querySelector('.page-3').classList.remove('flex');
   document.querySelector('.page-3').classList.add('hide');
+  document.querySelector('.page-4').classList.remove('hide');
   document.querySelector('.page-4').classList.add('flex');
+  document.querySelector('.page-0').classList.remove('flex');
   document.querySelector('.page-0').classList.add('hide');
+  cleanPage();
 });
 
 document.querySelector('#img-logo').addEventListener('click', () => {
@@ -488,6 +517,7 @@ document.querySelector('#img-logo').addEventListener('click', () => {
   document.querySelector('.page-0').classList.add('flex');
   document.querySelector('.body').classList.remove('background');
   document.querySelector('.body').classList.add('background-none');
+  cleanPage();
 });
 
 document.querySelector('#img-logo-movil').addEventListener('click', () => {
@@ -497,6 +527,7 @@ document.querySelector('#img-logo-movil').addEventListener('click', () => {
   document.querySelector('.page-3').classList.add('hide');
   document.querySelector('.page-4').classList.add('hide');
   document.querySelector('.page-0').classList.add('flex');
+  cleanPage();
 });
 
 document.querySelector('.linkMenu1').addEventListener('click', () => {
